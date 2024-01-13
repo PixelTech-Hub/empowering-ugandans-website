@@ -1,19 +1,19 @@
 import React from 'react'
-import ServiceIcon from '../assets/service.svg';
 
-const Card = () => {
+const Card = ({ name, icon, message, firstColor, secondColor }) => {
+	console.log(firstColor, secondColor);
 	return (
-		<div className='bg-[#f7e135] w-[400px] h-[300px] rounded-lg p-6 mt-4   flex flex-col items-center'>
-			{/* icon */}
-			<img src={ServiceIcon} alt="" className='w-24 h-24 object-cover' />
-			{/* title */}
-			<h3 className='font-bold text-xl pt-10'>One Stop Study Solution</h3>
-			{/* message */}
-			<div>
-				<p>Get a full view so you know where to save. Track spending, deta ke</p>
-			</div>
-			{/*  button */}
-			<button className='bg-[#063BF8] p-2 rounded-lg text-white mt-2 mb-2'>Learn More</button>
+		<div className={`relative  w-[400px] h-[350px] rounded-lg p-6 flex flex-col items-center bg-gradient-to-br from-[${firstColor}] to-[${secondColor}]`}>
+			<img src={icon} alt="" className='w-24 h-24 object-cover' />
+			<h3 className='font-bold text-xl pt-10 text-center'>{name}</h3>
+			{
+				!firstColor  ? (
+					<div className='absolute top-56 px-4 text-black text-center text-[16px]'><p>{message}</p></div>
+				) : (
+					<div className='lg:absolute lg:top-56 px-4  text-white text-[16px]'><p>{message}</p></div>
+				)
+			}
+
 		</div>
 	)
 }
